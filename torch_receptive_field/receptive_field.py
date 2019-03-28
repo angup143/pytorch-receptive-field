@@ -68,6 +68,7 @@ def receptive_field(model, input_size, batch_size=-1, device="cuda"):
             not isinstance(module, nn.Sequential)
             and not isinstance(module, nn.ModuleList)
             and not (module == model)
+            and list(module.children()) == []
         ):
             hooks.append(module.register_forward_hook(hook))
 
